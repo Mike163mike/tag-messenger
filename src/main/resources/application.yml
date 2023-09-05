@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: tag-messenger
+  flyway:
+    baseline-on-migrate: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tag-messenger-db
+    username: postgres
+    password: root
+    driverClassName: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  docker:
+    compose:
+      enabled: true
+      lifecycle-management: start_and_stop
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+        one-indexed-parameters: false
+      sort:
+        sort-parameter: editTime
