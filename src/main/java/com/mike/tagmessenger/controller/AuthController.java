@@ -1,14 +1,31 @@
 package com.mike.tagmessenger.controller;
 
+import com.mike.tagmessenger.dto.UserRegDto;
+import com.mike.tagmessenger.facade.UserFacade;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/registration")
+@RequestMapping("/auth")
 @RestController
-//@Tag(name = "Registration of users", description = "The registration API. The endpoint for registration new users.")
+@Tag(name = "Registration users", description = "The registration API. The endpoint for registration new users.")
 @AllArgsConstructor
 public class AuthController {
 
+    private final UserFacade userFacade;
 
+    @Operation(summary = "Registration new user by username and password.")
+    @PostMapping
+    public ResponseEntity<?> createNewUser(@RequestBody UserRegDto userRegDto) {
+        return ResponseEntity.ok(userFacade.createUser(userRegDto));
+    }
+
+    @GetMapping //=================================
+    public String test() {
+        return "test" + "====================";
+    }
 }

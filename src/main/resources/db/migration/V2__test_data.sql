@@ -3,14 +3,14 @@ values ('2291f10f-980f-4e0e-8d3b-0e733339039b',
         '2023-08-04T08:00',
         'Bender',
         '$2a$12$VYyz3G4IYGrSVgxGqChtCeKpPuK8tZApC6jKGfIi6EKUm.tOM1DCW',
-        '{USERT_ROLE}'),
+        '{ROLE_USER}'),
        ('5f4c576d-e22f-457c-87f1-f8ca64e36164',
         '2023-08-06T09:00',
         'Fry',
         '$2a$12$VYyz3G4IYGrSVgxGqChtCeKpPuK8tZApC6jKGfIi6EKUm.tOM1DCW',
-        '{USERT_ROLE}');
+        '{ROLE_USER}');
 
-insert into messages (id, create_time, message, tag, publisher_id)
+insert into messages (id, create_time, message, hashtag, publisher_id)
 values ('99c97ae0-e601-4bfa-a92a-b5f91a17a1d0',
         '2023-08-04T09:00',
         'Bender the best! Kiss my shiny metal a**!',

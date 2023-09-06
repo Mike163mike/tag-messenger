@@ -30,8 +30,7 @@ public class Message {
     @NotBlank
     @Column(unique = true)
     private String message;
-    @NotBlank
-    private String tag;
+    private String hashtag;
     @ManyToOne
     @NotNull
     private User publisher;

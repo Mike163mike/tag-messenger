@@ -3,7 +3,8 @@
 RESTful API - приложение "Tag messenger" на фреймворке Spring boot.    
 
 
-For starting application Docker demon should be run on the host. Was used Docker Compose tool.    
+For starting application Docker demon should be run on the host. Was used Docker Compose tool.     
+API documented with OpenAPI (Swagger). URI: <localhost:8080/swagger-ui.html>
 
 password: 100  (by all users from test data)
 
