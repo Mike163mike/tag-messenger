@@ -6,13 +6,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/auth")
 @RestController
-@Tag(name = "Registration users", description = "The registration API. The endpoint for registration new users.")
+@Tag(name = "Registration users", description = "Registration API. Endpoints for registration new users.")
 @AllArgsConstructor
 public class AuthController {
 

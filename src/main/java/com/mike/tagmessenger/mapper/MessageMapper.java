@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface MessageMapper {
 
-MessageDto map(Message message);
+    MessageDto map(Message message);
 
-Message map(MessageDto messageDto);
+    Message map(MessageDto messageDto);
 }

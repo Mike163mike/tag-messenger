@@ -5,6 +5,7 @@ import com.mike.tagmessenger.mapper.MessageMapper;
 import com.mike.tagmessenger.service.MessageService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,12 +22,14 @@ public class MessageFacadeImpl implements MessageFacade {
     }
 
     @Override
-    public Page<MessageDto> getMessagesByHashtag(String hashtag) {
-        return null;
+    public Page<MessageDto> getMessagesByHashtag(String hashtag, Pageable pageable) {
+        return messageService.getMessagesByHashtag(hashtag, pageable)
+                .map(messageMapper::map);
     }
 
     @Override
-    public Page<MessageDto> getAllMessages() {
-        return null;
+    public Page<MessageDto> getAllMessages(Pageable pageable) {
+        return messageService.getAllMessages(pageable)
+                .map(messageMapper::map);
     }
 }

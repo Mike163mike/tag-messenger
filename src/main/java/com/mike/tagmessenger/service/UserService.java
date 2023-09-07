@@ -4,7 +4,7 @@ import com.mike.tagmessenger.model.User;
 
 public interface UserService {
 
-    User saveUser(User user);
+    void saveUser(User user);
 
     void deleteUser(String username);
 }

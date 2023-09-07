@@ -12,7 +12,7 @@ create table messages
     id           uuid not null primary key,
     create_time  timestamp(6) with time zone,
     message      varchar(255) unique,
-    hashtag          varchar(255),
+    hashtag      varchar(255),
     publisher_id uuid not null,
     constraint fk_publisher_id
         foreign key (publisher_id)

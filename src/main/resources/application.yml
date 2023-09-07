@@ -26,4 +26,4 @@ spring:
         default-page-size: 10
         one-indexed-parameters: false
       sort:
-        sort-parameter: editTime
+        sort-parameter: createTime
