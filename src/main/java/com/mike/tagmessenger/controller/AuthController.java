@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/auth")
 @RestController
 @Tag(name = "Registration users", description = "Registration API. Endpoints for registration new users.")
 @AllArgsConstructor
@@ -17,13 +16,13 @@ public class AuthController {
     private final UserFacade userFacade;
 
     @Operation(summary = "Registration new user by username and password.")
-    @PostMapping
+    @PostMapping("/auth")
     public ResponseEntity<?> createNewUser(@RequestBody UserRegDto userRegDto) {
         return ResponseEntity.ok(userFacade.createUser(userRegDto));
     }
 
-    @GetMapping //=================================
-    public String test() {
-        return "test" + "====================";
-    }
+    @GetMapping("/auth/test")
+    public ResponseEntity<String> test() { //******************
+        return ResponseEntity.ok("Test from AuthController");
+    } //****************
 }

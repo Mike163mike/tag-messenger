@@ -28,7 +28,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorizeHttpRequests) ->
                         authorizeHttpRequests
-                                .requestMatchers("/auth/**").anonymous()
+                                .requestMatchers("/auth").anonymous()
                                 .requestMatchers("/message/**", "/user/**").authenticated()
                                 .anyRequest().permitAll())
 //                .sessionManagement(httpSecuritySessionManagementConfigurer ->
@@ -36,8 +36,9 @@ public class SecurityConfig {
 //                .exceptionHandling(httpSecurityExceptionHandlingConfigurer ->
 //                        httpSecurityExceptionHandlingConfigurer
 //                                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
-                .httpBasic(Customizer.withDefaults())
+//                .httpBasic(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults())
+//                .defaultSuccessUrl("/auth")
                 .logout(Customizer.withDefaults());
         return http.build();
     }

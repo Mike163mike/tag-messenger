@@ -21,7 +21,8 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public void createMessage(Message message) {
-        var user = userRepository.findUserByUsername(securityContextService.getUserName());
+        var username = securityContextService.getUserName();
+        var user = userRepository.findUserByUsername(username);
         if (!message.getHashtag().startsWith("#")) {
             var hashtag = "#" + message.getHashtag();
             message.setHashtag(hashtag);

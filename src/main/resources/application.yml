@@ -27,3 +27,7 @@ spring:
         one-indexed-parameters: false
       sort:
         sort-parameter: createTime
+
+#springdoc:
+#  show-login-endpoint: true
+
