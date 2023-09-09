@@ -23,9 +23,4 @@ public class UserController {
         userFacade.deleteUser(username);
         return ResponseEntity.ok(String.format("User %s was deleted successfully.", username));
     }
-
-    @GetMapping
-    public ResponseEntity<String> test() { //******************
-        return ResponseEntity.ok("Test from UserController.");
-    } //****************
 }

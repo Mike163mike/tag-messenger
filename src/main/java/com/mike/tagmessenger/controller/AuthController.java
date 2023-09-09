@@ -20,9 +20,4 @@ public class AuthController {
     public ResponseEntity<?> createNewUser(@RequestBody UserRegDto userRegDto) {
         return ResponseEntity.ok(userFacade.createUser(userRegDto));
     }
-
-    @GetMapping("/auth/test")
-    public ResponseEntity<String> test() { //******************
-        return ResponseEntity.ok("Test from AuthController");
-    } //****************
 }

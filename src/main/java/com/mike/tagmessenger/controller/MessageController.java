@@ -44,9 +44,4 @@ public class MessageController {
             direction = Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(messageFacade.getAllMessages(pageable));
     }
-
-    @GetMapping("/auth")
-    public ResponseEntity<String> test() {    //*********************
-        return ResponseEntity.ok("Test from MessageController.");
-    }
 }

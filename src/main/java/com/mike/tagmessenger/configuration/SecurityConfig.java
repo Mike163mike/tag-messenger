@@ -29,17 +29,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorizeHttpRequests) ->
                         authorizeHttpRequests
                                 .requestMatchers("/auth").anonymous()
+                                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                                 .requestMatchers("/message/**", "/user/**").authenticated()
-                                .anyRequest().permitAll())
-//                .sessionManagement(httpSecuritySessionManagementConfigurer ->
-//                        httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//                .exceptionHandling(httpSecurityExceptionHandlingConfigurer ->
-//                        httpSecurityExceptionHandlingConfigurer
-//                                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
-//                .httpBasic(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults())
-//                .defaultSuccessUrl("/auth")
-                .logout(Customizer.withDefaults());
+                                .anyRequest().authenticated())
+                .httpBasic(Customizer.withDefaults());
         return http.build();
     }
 

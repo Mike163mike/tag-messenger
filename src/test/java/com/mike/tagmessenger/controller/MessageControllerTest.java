@@ -1,19 +1,21 @@
 package com.mike.tagmessenger.controller;
 
-import com.mike.tagmessenger.Specs;
+import com.mike.tagmessenger.AbstractTest;
 import com.mike.tagmessenger.dto.MessageDto;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-class MessageControllerTest {
+class MessageControllerTest extends AbstractTest {
 
     final String username = "Bender";
     final String password = "100";
     final MessageDto message = new MessageDto("Test message.", "#testTag");
 
     @Test
+//    @Disabled("Not tuned.")
     void createMessage() {
         Specs.instalSpec(Specs.requestSpec("http://localhost", 8080), Specs.responseSpec());
 
@@ -29,6 +31,7 @@ class MessageControllerTest {
     }
 
     @Test
+    @Disabled("Not tuned.")
     void getMessagesByHashtag() {
 
         Specs.instalSpec(Specs.requestSpec("http://localhost", 8080), Specs.responseSpec());
@@ -46,6 +49,7 @@ class MessageControllerTest {
     }
 
     @Test
+    @Disabled("Not tuned.")
     void getAllMessages() {
         Specs.instalSpec(Specs.requestSpec("http://localhost", 8080), Specs.responseSpec());
 

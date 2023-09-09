@@ -1,4 +1,4 @@
-package com.mike.tagmessenger;
+package com.mike.tagmessenger.controller;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;

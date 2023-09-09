@@ -19,7 +19,7 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("Tag Messenger")
                         .version("1.0.0")
-                        .description("Tag Messenger is an app for create, read and delete messages. Authorised users can" +
+                        .description("Tag Messenger is an app for create and read messages. Authorised users can" +
                                 " read the message tape (everything in a row or sorted by hashtag).")
                         .contact(
                                 new Contact()

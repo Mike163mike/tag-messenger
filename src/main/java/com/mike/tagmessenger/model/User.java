@@ -31,6 +31,6 @@ public class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private List<Role> roles;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Message> messages;
 }

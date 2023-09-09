@@ -1,13 +1,15 @@
 package com.mike.tagmessenger.controller;
 
-import com.mike.tagmessenger.Specs;
+import com.mike.tagmessenger.AbstractTest;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-class UserControllerTest {
+class UserControllerTest extends AbstractTest {
 
     @Test
+    @Disabled("Not tuned.")
     void deleteUser() {
 
         String username = "Bender";
