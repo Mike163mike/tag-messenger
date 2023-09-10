@@ -4,10 +4,14 @@ import com.mike.tagmessenger.AbstractTest;
 import com.mike.tagmessenger.dto.MessageDto;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import org.hamcrest.Matchers;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
+import static org.hamcrest.Matchers.containsString;
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class MessageControllerTest extends AbstractTest {
 
     final String username = "Bender";
@@ -15,8 +19,8 @@ class MessageControllerTest extends AbstractTest {
     final MessageDto message = new MessageDto("Test message.", "#testTag");
 
     @Test
-//    @Disabled("Not tuned.")
-    void createMessage() {
+    @Order(1)
+    void createMessageWhenRequestIsOk() {
         Specs.instalSpec(Specs.requestSpec("http://localhost", 8080), Specs.responseSpec());
 
         RestAssured
@@ -27,11 +31,31 @@ class MessageControllerTest extends AbstractTest {
                 .post("/message")
                 .then()
                 .statusCode(200)
-                .assertThat().contentType(ContentType.JSON);
+                .assertThat().contentType(ContentType.TEXT)
+                .assertThat()
+                .body(containsString("Message created."));
     }
 
     @Test
-    @Disabled("Not tuned.")
+    @Order(2)
+    void createMessageWhenRequestIsBad() {
+        Specs.instalSpec(Specs.requestSpec("http://localhost", 8080), Specs.responseSpec());
+
+        RestAssured
+                .given()
+                .auth().basic(username, password)
+                .when()
+                .body(message)
+                .post("/message")
+                .then()
+                .statusCode(400)
+                .assertThat().contentType(ContentType.TEXT)
+                .assertThat()
+                .body(containsString("Message: \" Test message. \" already published."));
+    }
+
+    @Test
+    @Order(3)
     void getMessagesByHashtag() {
 
         Specs.instalSpec(Specs.requestSpec("http://localhost", 8080), Specs.responseSpec());
@@ -44,12 +68,12 @@ class MessageControllerTest extends AbstractTest {
                 .then()
                 .statusCode(200)
                 .assertThat().contentType(ContentType.JSON)
-                .body("message", Matchers.equalTo("Test message."),
-                        "hashtaqg", Matchers.equalTo("#testTag"));
+                .assertThat()
+                .body(containsString("Test message."));
     }
 
     @Test
-    @Disabled("Not tuned.")
+    @Order(4)
     void getAllMessages() {
         Specs.instalSpec(Specs.requestSpec("http://localhost", 8080), Specs.responseSpec());
 
@@ -61,7 +85,10 @@ class MessageControllerTest extends AbstractTest {
                 .then()
                 .statusCode(200)
                 .assertThat().contentType(ContentType.JSON)
-                .body("message", Matchers.equalTo("Test message."),
-                        "hashtaqg", Matchers.equalTo("#testTag"));
+                .assertThat()
+                .body(containsString("Test message."),
+                        containsString("Bender the best! Kiss my shiny metal a**!"),
+                        containsString("Remember me!!!"),
+                        containsString("I love Leela! Any Leela!"));
     }
 }

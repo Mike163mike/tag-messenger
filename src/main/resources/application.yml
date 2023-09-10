@@ -27,7 +27,7 @@ spring:
         one-indexed-parameters: false
       sort:
         sort-parameter: createTime
+server:
+  port: 8080
 
-#springdoc:
-#  show-login-endpoint: true
 

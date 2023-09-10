@@ -5,18 +5,21 @@ import com.mike.tagmessenger.repository.UserRepository;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
 @ActiveProfiles({"test"})
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ComponentScan(lazyInit = true)
+@ExtendWith(SpringExtension.class)
 abstract public class AbstractTest {
 
     @Autowired
@@ -41,10 +44,10 @@ abstract public class AbstractTest {
         POSTGRES.start();
     }
 
-    @BeforeEach
-    void clear() {
-        messageRepository.deleteAll();
-        entityManager.createNativeQuery("delete from users_messages");
-        userRepository.deleteAll();
-    }
+//    @BeforeEach
+//    void clear() {
+//        messageRepository.deleteAll();
+//        entityManager.createNativeQuery("delete from users_messages");
+//        userRepository.deleteAll();
+//    }
 }

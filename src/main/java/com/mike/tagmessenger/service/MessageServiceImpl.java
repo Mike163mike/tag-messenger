@@ -29,7 +29,7 @@ public class MessageServiceImpl implements MessageService {
         }
         message.setPublisher(user);
         if (messageRepository.findByMessage(message.getMessage()) != null) {
-            throw new AppException(String.format("Message: \" %s \" already published ", message.getMessage()),
+            throw new AppException(String.format("Message: \" %s \" already published.", message.getMessage()),
                     HttpStatus.BAD_REQUEST);
         } else {
             messageRepository.save(message);
