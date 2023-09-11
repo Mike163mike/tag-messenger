@@ -8,7 +8,7 @@ API documented with OpenAPI (Swagger). URI: <localhost:8080/swagger-ui.html>
 
 password: 100  (by all users from test data)
 
-### Использованные в проекте нструменты и технологии:
+### Использованные в проекте инструменты и технологии:
 
 ● Java 17\
 ● Git\

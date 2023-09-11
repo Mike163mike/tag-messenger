@@ -13,8 +13,11 @@ import java.util.UUID;
 public interface MessageRepository extends JpaRepository<Message, UUID> {
 
     Message findByMessage(String message);
+
     List<Message> findMessageByPublisher(User publisher);
+
     Page<Message> findAllByHashtagOrderByCreateTimeDesc(String hashtag, Pageable pageable);
+
     @NonNull
     Page<Message> findAll(@NonNull Pageable pageable);
 }
