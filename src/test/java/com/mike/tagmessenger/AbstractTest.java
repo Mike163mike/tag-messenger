@@ -25,8 +25,7 @@ abstract public class AbstractTest {
     protected MessageRepository messageRepository;
     @Autowired
     protected UserRepository userRepository;
-    @Autowired
-    protected EntityManager entityManager;
+
     protected static final PostgreSQLContainer<?> POSTGRES = new PostgreSQLContainer<>(
             DockerImageName.parse("postgres:15.3")
                     .asCompatibleSubstituteFor("postgres"));
